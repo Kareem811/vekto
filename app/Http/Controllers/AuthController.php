@@ -51,12 +51,12 @@ class AuthController extends Controller
             "message" => "Logged out successfully"
         ], 200);
     }
-    public function logoutFromAllDevices(Request $request)
-    {
-        $request->user()->tokens()->delete();
+    // public function logoutFromAllDevices(Request $request)
+    // {
+    //     $request->user()->tokens()->delete();
 
-        return response()->json([
-            "message" => "Logged out from all devices"
-        ], 200);
-    }
+    //     return response()->json([
+    //         "message" => "Logged out from all devices"
+    //     ], 200);
+    // }
 }

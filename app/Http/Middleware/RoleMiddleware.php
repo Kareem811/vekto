@@ -23,21 +23,15 @@ class RoleMiddleware
     //         return response()->json(["message" => "Forbidden - Access Denied"], 403);
     //     }
 
-    //     return $next($request);
     // }
-    public function handle(Request $request, Closure $next, ...$roles): Response // Key change: ...$roles
+    public function handle(Request $request, Closure $next): Response // Key change: ...$roles
     {
         if (!Auth::check()) {
-            return response()->json(["message" => "Unauthorized"], 401); // Or redirect to login
+            return response()->json(["message" => "Unauthorized"], 401); // Fixed status code
         }
-
-        // Check if the user has ANY of the required roles
-        foreach ($roles as $role) {  // Iterate through provided roles
-            if (Auth::user()->role === $role) { // Strict comparison is good practice
-                return $next($request); // User has the required role, proceed
-            }
+        if (Auth::user()->role === "superadmin") {
+            return $next($request);
         }
-
-        return response()->json(["message" => "Forbidden - Access Denied"], 403); // Or redirect with an error message
+        return response()->json(["message" => "Forbidden"], 403);
     }
 }
