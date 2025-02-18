@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Http\Request;
@@ -25,3 +26,4 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 });
 Route::resource('/products', ProductController::class);
+Route::resource('/categories', CategoryController::class);
