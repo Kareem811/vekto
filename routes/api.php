@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,4 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::resource('/products', ProductController::class);
 Route::resource('/categories', CategoryController::class);
 Route::post('orders', [OrderController::class, 'store']);
+Route::resource('/subcategories', SubCategoryController::class);

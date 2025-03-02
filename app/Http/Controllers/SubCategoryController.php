@@ -31,7 +31,11 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SubCategory::create([
+            'name' => $request->name,
+            'category_id' => $request->category_id
+        ]);
+        return Response::json(['message' => "Done"], 201);
     }
 
     /**
